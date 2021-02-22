@@ -6,4 +6,41 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>server</artifactId>
+  <dependencies>
+		<dependency>
+			<groupId>com.github.tec9skanfa</groupId>
+			<artifactId>stateofanarchy-libs</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<!--JAR -->
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>make-Client</id>
+						<phase>package</phase>
+						<configuration>
+							<finalName>${project.artifactId}-${project.version}+git-${git.commit.id.full}</finalName>
+							<archive>
+								<manifest>
+									<mainClass>com.github.tec9skanfa.stateofanarchy.server.init.ServerInit</mainClass>
+								</manifest>
+							</archive>
+							<descriptorRefs>
+								<descriptorRef>jar-with-dependencies</descriptorRef>
+							</descriptorRefs>
+						</configuration>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!--JAR -->
+
+		</plugins>
+	</build>
 </project>
